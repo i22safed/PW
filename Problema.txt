@@ -1,0 +1,27 @@
+El objetivo de este ejercicio es construir una aplicación para gestionar una competición deportiva en formato de liga a doble vuelta. El objetivo es gestionar todos los aspectos necesarios para que un administrador pueda añadir y modificar la información necesaria, y un usuario puede seguir la información y acceder a ella de diferentes formas.
+
+Descripción del problema
+________________________________________________________________________________________
+
+- La web debe gestionar los equipos y las jornadas. 
+
+- Los equipos están formados por un número no fijo de jugadores. Cada jugador pertenece a un solo equipo, aunque éste puede cambiar.
+
+- Sólo usuarios registrados pueden modificar información, el resto sólo pueden visualizarla.
+
+- La liga está compuesta por un número de jornadas. Cada jornada está compuesta por un número de partidos entre dos equipos. Estos partidos tienen asociado un resultado.
+
+- Para realizar este proyecto es necesario llevar a cabo:
+	- Gestión de jugadores.
+	- Gestión de equipos.
+	- Gestión de jornadas.
+	- Gestión de resultados y clasificación.
+	
+- Para la gestión de usuarios se puede usar el módulo que proporciona Django.	
+	
+- Una posible división en aplicaciones sería la gestión de jugadores/equipos y la gestión de jornadas/resultados.
+
+- Los modelos deben tener al menos los siguientes campos:
+	- Equipos: Nombre, ciudad, año de creación, breve historia y nombre del entrenador.
+	- Jugadores: Nombre, fecha de nacimiento, lugar de nacimiento, edad, equipo, posición y breve historial, equipos anteriores (0 a n).
+

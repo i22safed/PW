@@ -1,0 +1,19 @@
+Práctica 1. Creación del modelo y uso de la aplicación admin
+_______________________________________________________________________________________
+
+A partir del enunciado del problema implemente los siguientes pasos:
+
+1.- Cree el proyecto y configure settings.py
+
+2.- Cree la aplicación de gestión de jugadores/equipos.
+
+3.- Defina los modelos de jugadores y equipos en models.py.
+
+	3.1.- Considere para los campos de cada clase la información necesaria para la funcionalidad pedida.
+	3.2.- Tenga en cuenta los campos que son obligatorios y cuáles no.
+
+4.- Cree la base de datos para la aplicación.
+
+5.- Use el shell de Django para verificar los modelos. Practique la creación, modificación, borrado y la recuperación de información. Cree y consulte las relaciones 1-N y N-N.
+
+6.- Active la aplicación admin y úsela para verificar los modelos realizados y añadir información a la base de datos.
