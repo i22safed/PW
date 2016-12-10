@@ -15,9 +15,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
 
+
+    # Para cada url de admin/ Django encontrará su correspondiente view para
+    # ello necesitamos de expresiones regulares (regex):
+    # ^ denota el principio del texto
+    # $ denota el final del texto
+    # \d representa un dígito
+    # + indica que el ítem anterior debería ser repetido por lo menos una vez
+    # () para encerrar una parte del patrón
+
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+        url(r'^admin/', include(admin.site.urls)),
+        url(r'', include('principal.urls')),
 ]
