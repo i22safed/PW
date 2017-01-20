@@ -1,43 +1,18 @@
-{% load staticfiles %}
 
-<html>
-<head>
+{% extends 'principal/base.html'%}
 
-     <title>El mundo tudei</title>
+{% block content %}
 
-     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-     <link rel="stylesheet" href="{% static 'css/principal.css' %}">
-     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+     {% for post in posts %}
 
-
-
-</head>
-
-     <body>
-
-          <div>
-
-               <h1 align="center">El mundo tudei</h1>
-
-
-          </div>
-
-
-
-          {% for post in posts %}
-
-          <div class="post">
-               <h2>{{post.title}}</h2>
-               <p>{{post.text|linebreaksbr}}</p>
+     <div class="post">
+          <h2>{{post.title}}</h2>
+          <p>{{post.text|linebreaksbr}}</p>
+          <div class="date">
                <p>Publicado: {{post.published_date}}</p>
-
           </div>
+     </div>
 
-          {% endfor %}
+     {% endfor %}
 
-
-
-     </body>
-
-</html>
+{% endblock content %}
