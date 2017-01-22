@@ -12,6 +12,8 @@ class Post(models.Model):    # model.Models → Para saber que es un modelo de D
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank = True , null = True)
+    section = models.TextField(max_length=20)
+    id_post = models.TextField(max_length=8)
 
     def publish(self):      # Metodo de la clase Post
         self.published_date = timezone.now()
