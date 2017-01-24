@@ -1,0 +1,109 @@
+.header h1 {
+
+     text-align: center;
+     color: white;
+     background-color: orange;
+     font-family: 'Julius Sans One', sans-serif;
+     font-size: 56px;
+     padding: 80px 40px 80px 40px;
+     margin-top: 0;
+
+}
+
+.header a{
+
+     color: white;
+
+}
+
+.header a:hover{
+
+     color: #C7C7C7;
+
+}
+
+.header a:active{
+
+     color: #A8A8A8;
+
+}
+
+.post h2{
+
+     padding-top: 25px;
+     padding-bottom: 15px;
+     font-family: 'Oswald', sans-serif;
+     font-weight: bold;
+     padding-left: 25%;
+     padding-right: 25%;
+     text-align: justify;
+     letter-spacing: 1px;
+
+
+}
+
+.post p{
+
+     font-family: 'Oswald', sans-serif;
+     padding-left: 25%;
+     padding-right: 25%;
+     text-align: justify;
+     font-size: 22px;
+     letter-spacing: 0.3px;
+
+}
+
+ul {
+    list-style-type: none;
+    margin-right: 25%;
+    padding-top: 1%;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    overflow: hidden;
+    background-color: white;
+    letter-spacing: 0.3px;
+}
+
+li {
+    float: right;
+    margin-left: 1%;
+}
+
+.post a{
+
+     color: black;
+
+}
+
+.post a:hover{
+
+     color: #363636;
+
+}
+
+.post a:active{
+
+     color: #4d4d4d;
+
+}
+
+
+body{
+
+     font-family: 'Oswald', sans-serif;
+
+}
+
+
+
+footer{
+
+     background-color:  orange;
+     text-align: center;
+     font-size: 16px;
+     padding-top: 25px;
+     padding-bottom: 30px;
+     color: white;
+
+}
