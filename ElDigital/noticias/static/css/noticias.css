@@ -4,9 +4,10 @@
      color: white;
      background-color: orange;
      font-family: 'Julius Sans One', sans-serif;
-     font-size: 56px;
+     font-size: 64px;
      padding: 80px 40px 80px 40px;
      margin-top: 0;
+     margin-bottom: 0;
 
 }
 
@@ -25,6 +26,29 @@
 .header a:active{
 
      color: #A8A8A8;
+
+}
+
+.header ul{
+
+     background-color: orange;
+     color: white;
+     width: 100%;
+     top: 50%;
+     margin-top: 0px; /* 50% of the line-height in a */
+     text-align: center;
+     font-family: 'Julius Sans One', sans-serif;
+     font-size: 24px;
+     font-weight: bold;
+
+}
+
+.header li {
+
+     display: inline-block;
+     list-style: none;
+     margin-left: 22px;
+     margin-right: 22px;
 
 }
 
@@ -53,10 +77,11 @@
 
 }
 
-ul {
+.post ul {
     list-style-type: none;
     margin-right: 25%;
     padding-top: 1%;
+    padding-bottom: 3%;
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
     font-size: 20px;
@@ -65,7 +90,7 @@ ul {
     letter-spacing: 0.3px;
 }
 
-li {
+.post li {
     float: right;
     margin-left: 1%;
 }
@@ -99,11 +124,19 @@ body{
 
 footer{
 
+     font-family: 'Julius Sans One', sans-serif;
+     font-weight: bold;
      background-color:  orange;
      text-align: center;
      font-size: 16px;
-     padding-top: 25px;
-     padding-bottom: 30px;
+     padding-top: 75px;
+     padding-bottom: 75px;
      color: white;
+
+}
+
+.footer p {
+
+     font-size: 48px;
 
 }
