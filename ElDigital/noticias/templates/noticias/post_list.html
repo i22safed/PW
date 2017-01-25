@@ -1,60 +1,19 @@
-{% load staticfiles %}
+{% extends 'noticias/base.html' %}
 
-<html>
+{% block content %}
+     {% for post in posts %}
 
-<head>
+     <div class="post">
 
-     <title>El Mundo Tudei</title>
-     <link rel="stylesheet" href="{% static 'css/noticias.css' %}">
-     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css?family=Hind+Vadodara" rel="stylesheet">
-
-
-</head>
-
-<body>
-
-<div class="header">
-
-     <h1><a href="/">El Mundo Tudei</a></h1>
-     <ul>
-          <li><a href="/internacional">INTERNACIONAL</a></li>
-          <li><a href="/nacional">ESPAÑA TODAY</a></li>
-          <li><a href="/sociedad">SOCIEDAD</a></li>
-          <li><a href="/cultural">CULTURA</a></li>
-          <li><a href="/ciencia_tecnologia">CIENCIA Y TECNOLOGÍA</a></li>
-          <li><a href="/deportes">DEPORTES</a></li>
-          <li><a href="/usarios">USUARIOS</a></li>
-     </ul>
-
-
-</div>
-
-{% for post in posts %}
-
-<div class="post">
-
-          <h2><a href="">{{ post.title }}</a></h2>
-          <p>{{ post.body|linebreaksbr }}</p>
-          <ul>
-               <li>Autor: {{post.user}}</li>
-               <li>Fecha de creación: {{post.created_date}}</li>
-               <li>Tags: {{post.tag}}</li>
-          </ul>
+               <h2><a href="">{{ post.title }}</a></h2>
+               <p>{{ post.body|linebreaksbr }}</p>
+               <ul>
+                    <li>Autor: {{post.user}}</li>
+                    <li>Fecha de creación: {{post.created_date}}</li>
+                    <li>Tags: {{post.tag}}</li>
+               </ul>
 
      </div>
 
-{% endfor %}
-
-
-</body>
-
-<footer>
-
-     <p>Todas las noticias han sido verificadas por cuñados</p>
-
-</footer>
-<html>
+     {% endfor %}
+{% endblock content %}
