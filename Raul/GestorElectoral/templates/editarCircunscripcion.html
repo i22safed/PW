@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Editar una Circunscripcion</h1>
+<a href="/">Home</a>
+{% if perms.eleccion.change_circunscripcion %}
+
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+
+{% else %}
+	<h1>Para poder editar una circunscripcion, debera de logearse con el usuario supervisor</h1>
+	
+{% endif %}
+{% endblock %}

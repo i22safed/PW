@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <br>
+        <div class="well">
+            <form method="POST">
+                {% csrf_token %}
+                <table align="center" style="text-align: center;font-size: 20px;">
+                    {{ formulario }}
+                </table>
+                <br>
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</button>
+            </form>
+        </div>
+{% endblock %}
+

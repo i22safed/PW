@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block subtitulo %}
+
+{% endblock %}
+
+{% block contenido %}
+    <p><b>Nombre: </b>{{ mes.nombre }}</p>
+    <p><b>Partidos: </b></p>	
+	{% for x in mes.partidos.all %}
+		<li><a href="/partido/{{x.id}}">{{x}}</a>
+	{% endfor %}<br>
+	<br>
+    <input type="button" value="Atrás" onclick="location.reload();location.href='/'"/>
+    <br>
+    <br>
+{% endblock %}

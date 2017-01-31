@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Editar una Mesa</h1>
+<a href="/">Home</a>
+{% if perms.eleccion.change_mesa %}
+<div>
+    <form  id='formulario' method='POST' enctype='multipart/form-data' action=''>{% csrf_token %}
+        
+        <p>Circunscripcion: {{formulario.circunscripcion}}</p>
+        <p>Nombre de la Mesa: {{formulario.nombreMesa}}</p>
+        <p><input type='submit' value='Update' /></p>
+    </form>   
+    </div>
+{% else %}
+	<h1>Para poder editar una mesa, debera de logearse con el usuario supervisor</h1>
+	
+{% endif %}
+
+{% endblock %}

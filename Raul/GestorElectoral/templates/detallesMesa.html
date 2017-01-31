@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>
+	 <li><a href="/">Home</a></li>
+	
+	Nombre de la Mesa: {{detalle.nombreMesa}} <br>
+	Circunscripcion: {{detalle.circunscripcion.nombreCir}} <br>
+	Numero de escaños: {{detalle.circunscripcion.nEscanos}}<br>
+
+{% endblock content %}

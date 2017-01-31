@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<title>Gestor Electoral</title>
+<body>
+<h2>Bienvenido al Gestor Electoral</h2>
+	{% block sidebar %}
+	<ul>
+	     <li><a href="/">Home</a></li>
+	     <li><a href="/login">Iniciar Sesion</a></li>
+	     <li><a href="/salir">Cerrar Sesion</a></li>
+	     <li><a href="/addCircunscripcion">Añadir Circunscripciones</a></li>
+	     <li><a href="/listaCircunscripcion">Listar,Editar y Borrar Circunscripciones</a></li>
+	     <li><a href="/addMesa">Añadir Mesa Electoral </a></li>
+	     <li><a href="/listaMesa">Lista, Editar y Detalles de las Mesas Electorales </a></li>
+
+	   
+	</ul>
+
+	 {% block content %}
+
+	   {% endblock %}
+
+
+	{% endblock %}
+	
+
+</body>
+</html>

@@ -5,7 +5,7 @@
 
      <div class="post">
 
-               <h2><a href="">{{ post.title }}</a></h2>
+               <h2><a href="{% url 'noticias.views.post_detail' =post.pk %}">{{ post.title }}</a></h2>
                <p>{{ post.body|linebreaksbr }}</p>
                <ul>
                     <li>Autor: {{post.user}}</li>
