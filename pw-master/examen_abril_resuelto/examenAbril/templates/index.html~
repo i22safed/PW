@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title> Examen de abril </title>
+		<h1> Examen de abril de PW </h1>
+		
+		{% if  user.is_authenticated %}
+			<h3> Bienvenido {{user.username}} </h3>
+		{% endif %}
+		{% if not user.is_authenticated %}
+		    <a href="/login">Entrar</a>
+		{% endif %}
+	 
+		{% if user.is_authenticated %}
+		   	<a href="/logout">Salir</a>
+		{% endif %}
+
+		<h3>Destinatarios</h3>
+			<a href ="/Entregas/addDestinario"> <li>Añadir destinatario</li></a>
+			<a href ="/Entregas/verDestinatario"> <li>Ver destinatario</li></a>
+
+		<h3>Paquetes</h3>
+			<a href ="/Entregas/addPaquete"> <li>Añadir paquete</li></a>
+			<a href ="/Entregas/verPaquetes"> <li>Ver Paquetes</li></a>
+
+		<h3>Rutas</h3>
+			<a href ="/Entregas/addRuta"> <li>Añadir Ruta</li></a>
+			<a href ="/Entregas/verRuta"> <li>Ver Rutas</li></a>
+
+
+
+		</ul>
+	</head>
+
+	<body>
+
+	</body>
+</html>

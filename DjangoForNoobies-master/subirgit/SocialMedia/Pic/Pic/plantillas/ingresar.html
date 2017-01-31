@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block izq %}
+Conecta el puto usuario
+<form id='form' method='post' action=''>{% csrf_token %}
+	<table>{{form}}</table>
+	<p><input type='submit' value='Ingresar'></p>
+</form>
+{% endblock %}

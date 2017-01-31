@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if status %}
+<div class="ui olive message">
+  {{status}}
+</div>
+{% endif %}
+
+  <form class="ui form" action="/articulo/{{article.id}}/" method="post">
+  {% csrf_token %}
+    <div class="field">
+      <label>Titulo</label>
+      <input name="titulo" placeholder="Titulo" type="text" value="{{article.titulo}}">
+    </div>
+    <div class="field">
+      <label>Texto</label>
+      <textarea name="texto" type="text" style="height:140px; width:300px;" >{{article.texto}}</textarea>
+    </div>
+    <button class="ui button" type="submit">Modificar</button>
+  </form>
+
+{% endblock %}

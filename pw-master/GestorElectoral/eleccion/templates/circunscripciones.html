@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lista de Circunscripciones</title>
+  </head>
+  <body>
+    {% if circunscripciones %}
+      <ul>
+        {% for circunscripcion in circunscripciones %}
+          <li>{{ circunscripcion.nombre }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </body>
+</html>

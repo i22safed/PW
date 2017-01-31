@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block izq%}
+	
+	<font size=10 color=black><b>{{image.titulo}}</b></font><font size=2><i>de {{image.autor}}</i></font>
+	<img src="{{MEDIA_URL}}{{ image.imagen }}" width="90%" height="90%"/></img><br>
+	<center><a href="{{MEDIA_URL}}{{ image.imagen }}">Ver a tamaño completo</a><br></center>
+	{% if comentarioList %}
+		{% for Comentario in comentarioList %}
+					<table style="width:300px">
+					<tr>
+					<td><a href="{% url 'Nav.views.imageList' user_id=Comentario.who.id %}"><font size=3><b><u>{{Comentario.who}}</b></u></font></a></td>
+					</tr>
+					<tr>
+						<td><p>{{Comentario.texto}}<br><i><font color=red>+{{Comentario.positivos}}</font></p></td>
+						<td><a href="{% url 'Nav.views.votar' coment_id=Comentario.id img_id=image.id%}"><img src="{{STATIC_URL}}/images/positive.png" width="30" height="30"/></a></td>
+					</tr>
+					</table>
+		{% endfor %}
+	{% else %}
+		No hay comentarios.
+	{% endif %}
+{% endblock%}
+
+{% block dcha %}
+Comenta la foto
+<form id='form' method='post' action=''>{% csrf_token %}
+	<table>{{form.texto}}</table>
+	<p><input type='submit' value='Comentar'></p>
+</form>
+{% endblock %}

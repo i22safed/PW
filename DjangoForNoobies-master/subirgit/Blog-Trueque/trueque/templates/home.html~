@@ -1,0 +1,15 @@
+{% extends 'estructura.html' %}
+ 
+{% block andaya %}
+
+<h6>Bienvenido a tu perfil de usuario. Por ahora, las funciones son limitadas, pero podrás observar tus datos personales de registro en el margen derecho de la pantalla. Para postear un nuevo artículo con el que quieras realizar trueque, pulsa el botón "Artículo nuevo".</
+	<form action="{% url 'trueque.views.ponentrada' %}" method="POST">{% csrf_token %} <!--linea obligatoria para formularios en django-->
+		{{ form.as_p }}
+		<p><input type="submit" value="Artículo nuevo"></p>
+	</form>
+	
+ <p> Para cerrar sesión y volver a la página de vista de artículos, pulsa <button><a href="http://localhost">Cerrar sesión</a></button></p>
+ 
+ 
+{% endblock %}
+

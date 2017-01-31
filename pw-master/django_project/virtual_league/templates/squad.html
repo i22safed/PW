@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Equipo</title>
+    {% load staticfiles %}
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/standardize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/squad.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <a class="home" href="/"></a>
+        <a class="active squad" href="/squad"></a>
+        <a class="table" href="/table"></a>
+        <a class="logout" href="/logout"></a>
+      </nav>
+      <div class="court">
+        {% for player in players %}
+          <div class="position position-{{ player.position }}">
+            <a href="/{{ player.name }}">
+              <img class="face" src="../static/images/faces/{{ player.face }}" alt="">
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+{% extends "estructura.html" %}
+{% block contenido %}
+	<article>
+		<a href="{% url 'appblog.views.entrada' entrada.pk %}"><h3>{{ entrada.titulo }}</h3></a>
+		<time>{{ entrada.fecha }}</time>
+		<p>{{ entrada.contenido }}</p>
+	</article>
+	
+	<!--{% if comentario %}
+		<p>Comentarios:</p>
+	{% endif %}-->
+	<p>Comentarios:</p>
+	
+	<ul>
+	{% for comentario in comentario %}
+		<li>{{ comentario.fecha }} - {{ comentario.autor }}</li>
+		<ul>
+			<li>{{ comentario.mensaje|linebreaks }}</li>
+		</ul>
+		
+	{% endfor %}
+	</ul>
+	
+	<form action="{% url 'appblog.views.poncomentario' entrada.id %}" method="POST">
+	{% csrf_token %} <!--linea obligatoria para formularios en django-->
+		<p>Nombre: {{ form.autor }}</p>
+		<p>Mensaje: {{ form.mensaje|linebreaks }}</p>
+		<p><input type="submit" value="Enviar"></p>
+	</form>
+{% endblock %}

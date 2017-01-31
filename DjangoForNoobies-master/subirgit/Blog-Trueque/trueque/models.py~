@@ -1,0 +1,30 @@
+from django.db import models
+from django.contrib.auth.models import User
+from django.forms import ModelForm
+from django import forms
+from django.conf import settings
+from datetime import datetime    
+
+# Create your models here.
+class Entrada(models.Model):
+	titulo = models.CharField(max_length=100)
+	telefono = models.CharField(max_length=100)
+	deseado = models.CharField(max_length=100)
+	fecha = models.DateTimeField(auto_now_add=True)
+	vendedor = models.CharField(max_length=100)
+	image = models.ImageField(upload_to='photos', verbose_name='productphoto',  blank=True)
+	contenido = models.TextField()
+	
+	def __unicode__(self):
+		return str(self.titulo)
+		
+class Comentario(models.Model):
+	fechacreacion = models.DateTimeField(auto_now_add=True)
+	autor = models.CharField(max_length=100)
+	telefonoCo = models.CharField(max_length=100)
+	mensaje = models.TextField()
+	identrada = models.ForeignKey(Entrada)
+	
+	def __unicode__(self):
+		return unicode("%s %s " %(self.identrada, self.mensaje[:60]))
+		

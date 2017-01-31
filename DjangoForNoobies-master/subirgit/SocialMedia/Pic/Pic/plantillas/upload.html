@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block izq %}
+Sube una puta foto
+<form id='form' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+	<ul><li>Titulo : {{form.titulo}}
+		<li>Imagen : {{form.imagen}}
+		<li>Etiquetas : {{form.etiquetas}}
+	</ul>
+	<p><input type='submit' value='Upload'></p>
+</form>
+{% endblock %}

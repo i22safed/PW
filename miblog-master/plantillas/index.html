@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load django_markdown %}
+{% block contenido %}
+
+{% for elemento in lista.object_list %}
+
+
+    <div class="col s1 m6">
+    <div class="card grey lighten-5">
+    <div class="card-content black-text">
+    <span class="card-title">{{elemento.title}}</span>
+    <span align="left">{{elemento.body|markdown}}</span>
+
+
+    {% if user.is_authenticated and elemento.author == user %}
+
+
+    <span align="left">Publicado por ti el dia {{elemento.created}} en <a href="/categoria/{{elemento.categoria}}">{{elemento.categoria}}</a></span><br><br>
+    <span>
+    <a class="waves-effect btn teal" href="/comentario/{{elemento.id}}"><i class="material-icons right">reply</i>Comentar</a>
+    <a class="waves-effect teal btn" href="/editar/{{elemento.id}}"><i class="material-icons right">mode_edit</i>Editar</a>
+    <a class="waves-effect teal btn" href="/eliminar/{{elemento.id}}"><i class="material-icons right">delete</i>Eliminar</a>
+
+
+    {% else %}
+    {% if user.is_authenticated %}
+    <span align="left">Autor: <a href="/verusuario/{{elemento.author}}">{{elemento.author}}</a></span>
+    <span align="left">Publicado: {{elemento.created}} en <a href="/categoria/{{elemento.categoria}}">{{elemento.categoria}}</a></span>
+    <br><br>
+    <a class="waves-effect teal btn" href="/comentario/{{elemento.id}}"><i class="material-icons right">reply</i>Comentar</a>
+    <a class="btn disabled" ><i class="material-icons right">mode_edit</i>Editar</a>
+    <a class="btn disabled"><i class="material-icons right">delete</i>Eliminar</a>
+
+
+
+    {% else %}
+    <span align="left">Autor: {{elemento.author}}</a></span>
+    <span align="left">Publicado: {{elemento.created}} en <a href="/categoria/{{elemento.categoria}}">{{elemento.categoria}}</a></span>
+
+    
+    {% endif %} 
+    {% endif %}
+        
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% empty %}
+
+<div class="col s1 m6">
+  <div class="card grey lighten-5">
+    <div class="card-content black-text">
+      <span class="card-title"><h2>No hay ninguna entrada</h2></span>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+{% if lista.object_list and lista.paginator.num_pages > 1 %}
+    
+      <div class="col s12 m5">
+        <div class="card-panel blue lighten-5">
+        <span align="left">Página {{ lista.number }} de {{ lista.paginator.num_pages }}
+        {% if lista.has_next %}
+        <a class="waves-effect waves-light btn teal" href="?page={{ lista.next_page_number }}"><i class="material-icons left">undo</i>Entradas antiguas</a>
+        {% endif %}
+
+        {% if lista.has_previous %}
+        <a class="waves-effect waves-light btn teal" href="?page={{ lista.previous_page_number }}"><i class="material-icons left">redo</i>Entradas nuevas</a>
+        <a class="GF-btn GF-btn-blue" >Entradas nuevas</a>
+        {% endif %}
+          </span>
+        </div>
+      </div>
+
+
+  
+
+{% endif %}
+      <div class="col s12 m2">
+        <div class="card-panel blue lighten-5">
+          <span class="black-text">Blog desarrollado en Django 1.7.11 y Materialize, realizado por Rafael Salido Álvarez
+          </span>
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+{% block titulo %} Nuevo Usuario {% endblock %}
+
+{% block encabezado %}
+ <div class="container">
+
+  <h1>nuevo_usuarios</h1>
+
+</div>
+
+{% endblock %}
+
+{% block contenido %}
+
+	<br>
+
+		<section id="form"><!--form-->
+		<div class="container">
+			<div class="row">
+
+
+				<div class="col-sm-4">
+				
+				</div>
+
+				<div class="col-sm-4">
+					<div class="login-form"><!--login form-->
+						<h2>Proceso registro</h2>
+							<form id='formulario' method='post' enctype='multipart/form-data' action=''>
+
+								{% csrf_token %}
+								<table>{{formulario}}</table>
+								<p><input type='submit' class="btn btn-primary" value='Editar'/></p>
+
+							</form>
+					</div><!--/login form-->
+				</div>
+
+				<div class="col-sm-4">
+				
+				</div>
+
+			</div>
+		</div>
+	</section><!--/form-->
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+  
+
+{% endblock %}
+

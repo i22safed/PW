@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nueva liga</title>
+    {% load staticfiles %}
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/standardize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/newgame.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <form method="POST">
+        {% csrf_token %}
+        <input class="first" type="text" name="name" placeholder="Nombre de la partida">
+        <input type="text" name="key" placeholder="Clave">
+        <button type="submit" name="create">Crear</button>
+      </form>
+      {% if errors %}
+        <h1 class="error">Nombre de partida no válido</h1>
+      {% endif %}
+    </div>
+  </body>
+</html>

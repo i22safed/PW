@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block izq %}
+	<font size="6" color="blue">Tus mensajes recibidos</font><br><br>
+	{% if recibidos %}
+		{% for Mensaje in recibidos %}
+			<a href="{% url 'Nav.views.mensajeDetail' mensaje_id=Mensaje.id %}">Mensaje de {{Mensaje.fromu}}</a><br>
+		{% endfor %}
+	{% else %}
+		No tiene mensajes. <br>
+	{% endif %}
+	
+{% endblock %}
+
+{% block dcha%}
+		<a href="/buzon">Buzón</a><br>
+	<a href="/enviados">Enviados</a><br>
+
+
+{% endblock %}

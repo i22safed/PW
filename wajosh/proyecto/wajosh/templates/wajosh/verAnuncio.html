@@ -1,0 +1,149 @@
+{% extends 'index.html' %}
+{% block titulo %} Ver Anuncio {% endblock %}
+
+{% block encabezado %}
+     <div class="container">
+ 		 <h1> Ver Anuncio </h1>
+	</div>
+{% endblock %}
+
+{% block contenido %}
+
+<section>
+
+<div class="container">
+	<div class="row">
+
+
+            <div class="col-sm-3">
+              <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo" >
+
+                        <img src='{{MEDIA_URL}}{{anuncio.imagen}}' WIDTH=128 HEIGHT=128 alt="" /><br>
+                        Propietario: <strong><a href="/usuario/mizona/{{anuncio.propietario.id}}">{{anuncio.propietario}}</a></strong>
+                        <p>Titulo: {{anuncio.titulo}}</p>
+                        <p>Provincia: {{anuncio.provincia}}</p>
+                        <p>Categoria: {{anuncio.Categoria}}</p>
+
+                         <!-- <p>id: {{anuncio.id}}</p>-->
+
+
+                       <!-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Ver Anuncio</a> -->
+    {% if user.is_authenticated %}
+     <!--<form action="/editarAnuncio/{{anuncio.id}}"><input type="submit" value=Modificar></form margin=0>-->
+
+     <!--<form action="/eliminarAnuncio/{{anuncio.id}}"><input type="submit" value=Eliminar></form margin=0>-->
+
+      {% if conectado %}
+      
+                <a href="/editarAnuncio/{{anuncio.id}}"><i class="fa fa-plus-square"></i>Modificar  </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/eliminarAnuncio/{{anuncio.id}}"><i class="fa fa-plus-square"></i>Eliminar</a>
+      <!--<form action="/eliminararticulo/{{articulo.id}}"><input type="submit" value=Eliminar></form>-->
+      {% else %}
+                <a href="/usuario/mizona/enviarMensaje/{{anuncio.propietario.id}}"><i class="fa fa-plus-square"></i>Enviar Mensaje </a>&nbsp;&nbsp;&nbsp;&nbsp;
+          
+      {% endif %}
+
+    {% endif %}
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+    
+                        <p>Descripcion:</p> 
+                        <p>{{anuncio.texto}}</p>
+
+            </div>
+            <div class="col-sm-4">
+    
+                        <p>Intersa:</p> 
+                        <p>{{anuncio.cambio}}</p>
+            </div>
+
+
+
+ 	</div><!--rowr-->
+</div>
+          
+</section>
+<hr>
+
+<div class="container">
+  <div class="row">
+            <div class="col-sm-12">
+              {% if user.is_authenticated %}
+
+                 <a href="/comentar/{{anuncio.id}}"><i class="fa fa-plus-square"></i>Insertar Comentario</a>
+              {% endif %}
+
+            </div>
+
+  </div><!--rowr-->
+</div>
+
+<div class="container">
+  <div class="row">
+
+            <div class="col-sm-2">
+    
+
+            </div>
+      
+
+
+            <div class="col-sm-8">
+                  <p>Comentarios:</p> <hr>
+
+
+                   <!-- -< {{anuncio.propietario}} - {{usuario}}
+                        {% if anuncio.propietario == usuario %}<a href=""> hhhh</a>{% endif %}-->
+
+
+    
+                {% for elemento in coment %}
+
+                        <p>Usuario: {{elemento.propietario}}&nbsp;&nbsp;&nbsp;- {{elemento.fecha}}
+                          {% if conectado or elemento.propietario == usuario %}<a href="eliminarComentario/{{elemento.id}}"> Elimniar</a>{% endif %}
+
+                         <!-- {% ifequal conectado elemento.propietario.id %}<a href="eliminarComentario/{{elemento.id}}"> Elimniar</a>{% endifequal %}
+                        <p>Fecha: {{elemento.fecha}}</p>-->
+
+                        <p>{{elemento.texto}}</p>
+              <hr>
+
+
+              {% empty %}
+               <div class="container">
+                    <div class="row">
+                      <div class="col-sm-12">
+
+                            <h1>{{anuncio.propietario}} no dispone de comentarios en el sistema</h1>
+                      </div>
+                    </div>
+              </div>
+                  {% endfor %}
+
+               <center>
+              {% if coment.has_previous %}
+                <a href="?page={{coment.previous_page_number}}">Anterior<img src='/media/iconos/prev.png' width="30px" height="30px"></a>
+              {% endif %}
+              <span>Pagina {{coment.number}} de {{coment.paginator.num_pages}}</span>
+              {% if coment.has_next %}
+                <a href="?page={{coment.next_page_number}}">Siguiente<img src='/media/iconos/next.png' width="30px" height="30px"></a>
+              {% endif %}
+           </center>
+
+              </div>
+
+
+            <div class="col-sm-2">
+    
+
+            </div>
+  </div><!--rowr-->
+</div>
+
+{% endblock %}
+

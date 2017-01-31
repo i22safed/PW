@@ -1,0 +1,7 @@
+{% extends 'index.html' %}
+{% block content %}
+<form action='' method="post">{% csrf_token %}
+	{{form.as_ul}}
+	<input type="submit" value="Crear Usuario">
+</form>
+{% endblock content %}

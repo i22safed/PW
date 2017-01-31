@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Comienzo</title>
+    {% load staticfiles %}
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/standardize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/start.css' %}">
+  </head>
+  <body>
+    <div class="container container-1">
+      <h1>Elija la <strong>liga virtual</strong> en la que desea jugar.</h1>
+      <div class="search">
+        <form method="POST">
+          {% csrf_token %}
+          <button class="button-search" name="joingame" type="submit" alt="join"></button>
+        </form>
+        <p class="p-search"><strong>Únase</strong> a una liga ya existente.</p>
+      </div>
+      <div class="new">
+        <form method="POST">
+          {% csrf_token %}
+          <button class="button-add" name="newgame" type="submit" alt="new"></button>
+        </form>
+        <p class="p-new"><strong>Cree una nueva</strong> liga e invite a otros usuarios.</p>
+      </div>
+    </div>
+  </body>
+</html>

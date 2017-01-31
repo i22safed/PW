@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block izq %}
+		<h1>ACTIVIDAD</h1>
+		{% for Image in img1 %}
+		  <a href="{{MEDIA_URL}}{{ Image.imagen }}"><img src="{{MEDIA_URL}}{{ Image.imagen }}" width="90%" height="90%"/></a><br>
+			<i>It's yours.</i><br>
+			<hr>
+		{% endfor %}
+		{% for Image in img2 %}
+		  <a href="{{MEDIA_URL}}{{ Image.imagen }}"><img src="{{MEDIA_URL}}{{ Image.imagen }}" width="90%" height="90%"/></a><br>
+			<i>Rebloqueado por ti. Desde <a href="{% url 'Nav.views.imageList' user_id=Image.autor.id %}">{{Image.autor}}.</i></a><br>
+			<hr>
+		{% endfor %}
+		{% for Image in img3 %}
+		  <a href="{{MEDIA_URL}}{{ Image.imagen }}"><img src="{{MEDIA_URL}}{{ Image.imagen }}" width="90%" height="90%"/></a><br>
+			<i>Desde <a href="{% url 'Nav.views.imageList' user_id=Image.autor.id %}">{{Image.autor}}.</a><br>
+			<hr>
+		{% endfor %}
+
+{% endblock %}
+
+{% block dcha%}
+	<h1>MENSAJERÍA</h1>
+	<font color="blue"><b>Nuevos mensajes<b><br></font>
+	{% for Mensaje in listm %}
+		  <a href="{% url 'Nav.views.mensajeDetail' mensaje_id=Mensaje.id %}">Mensaje de {{Mensaje.fromu}}</a><br>
+	{% endfor %}
+	<a href="/buzon">Buzón</a><br>
+	<a href="/enviados">Enviados</a><br>
+{% endblock %}

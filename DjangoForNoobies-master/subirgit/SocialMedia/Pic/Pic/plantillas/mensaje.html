@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block izq %}
+De: <a href="{% url 'Nav.views.imageList' user_id=mensaje.fromu.id%}">{{mensaje.fromu}}</a><br>
+Fecha : {{mensaje.date}}
+<font color="black"><b><center>Mensaje</center></b><br> 
+{{mensaje.texto}}</font>
+{% endblock %}
+
+{% block dcha%}
+		<a href="/buzon">Buzón</a><br>
+	<a href="/enviados">Enviados</a><br>
+{% endblock %}

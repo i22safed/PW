@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block izq %}
+Busca
+<form id='form' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+	<table>{{form}}</table>
+	<p><input type='submit' value='Buscar'></p>
+</form>
+{% endblock %}

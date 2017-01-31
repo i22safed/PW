@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ player.name }}</title>
+    {% load staticfiles %}
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/standardize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/player.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <a class="home" href="/"></a>
+        <a class="squad" href="/squad"></a>
+        <a class="table" href="/table"></a>
+        <a class="logout" href="/logout"></a>
+      </nav>
+      <div class="position">
+        <img class="face" src="../static/images/faces/{{ player.face }}" alt="">
+      </div>
+      <div class="information">
+        <h1>{{ player.name }}</h1>
+        <table>
+          <tr class="first-row">
+            <th>Jornada</th>
+            <th>Puntuación</th>
+          </tr>
+          {% for score in player.playerscore_set.all %}
+            <tr>
+              <th>{{ score.fixture }}</th>
+              <th>{{ score.score }}</th>
+            </tr>
+          {% endfor %}
+          <tr class="last-row">
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

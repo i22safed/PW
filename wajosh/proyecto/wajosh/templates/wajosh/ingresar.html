@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+{% block titulo %} Loguear {% endblock %}
+
+{% block encabezado %}
+    <div class="container">
+		<h1>Login de acceso</h1>
+	</div>
+{% endblock %}
+
+{% block contenido %}
+<br><br>
+	<br>
+	<br>
+
+	<section id="form"><!--form-->
+		<div class="container">
+			<div class="row">
+
+
+				<div class="col-sm-1">
+				
+				</div>
+
+				<div class="col-sm-4">
+					<div class="login-form"><!--login form-->
+						<h2>Proceso de acceso</h2>
+						<form id='formulario' method='post' enctype='multipart/form-data' action='' >
+							{% csrf_token %}
+							<table>{{formulario}}</table> <!--#El método as_p() del formulario se utiliza para volcar el formulario en párrafos-->
+							<p><input type='submit' class="btn btn-primary" value='Entrar'/></p>
+						</form>
+					</div><!--/login form-->
+				</div>
+
+				<div class="col-sm-2">
+				
+				</div>
+
+				<div class="col-sm-5 ">
+					<div class="login-form"><!--login form-->
+						<h2>Dar de alta:</h2>
+						<input type="button" class="btn btn-primary" value="Pinchame" onClick=" window.location.href='/usuarios/nuevo' ">
+
+					</div><!--/login form-->
+				</div>
+
+			</div>
+		</div>
+	</section><!--/form-->
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+
+{% endblock %}
+

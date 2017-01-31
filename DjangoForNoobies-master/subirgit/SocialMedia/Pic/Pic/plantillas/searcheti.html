@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block izq %}
+	{% if imageList %}
+		{% for Image in imageList %}
+		  <a href="{{MEDIA_URL}}{{ Image.imagen }}"><img src="{{MEDIA_URL}}{{ Image.imagen }}" width="90%" height="90%"/></a>
+		{% endfor %}
+	{% else %}
+		No exisen imagenes con esa etiqueta.
+	{% endif %}
+
+{% endblock %}
+
+{% block dcha%}
+{% endblock %}

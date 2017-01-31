@@ -1,0 +1,8 @@
+{% extends 'index.html' %}
+{% block content %}
+	{% for paquete in paquetes %}
+	<p>
+	Paquete: {{ paquete.id }}<a href="/paquetes/{{ paquete.id }}"> Detalles</a> <a href="/paquetes/{{ paquete.id }}/settings"> Editar</a> 
+	</p>
+	{% endfor %}
+{% endblock content %}

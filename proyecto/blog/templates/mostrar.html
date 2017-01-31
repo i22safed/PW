@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for p in lista %}
+<h1>Titulo:{{p.titulo}}</h1>
+<p>Texto:{{p.texto}}</p>
+<p>Fecha:{{p.fecha}}</p>
+<p>autor:{{p.user.username}}</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "estructura.html" %}
+{% block contenido %}
+	<article>
+		<a href="{% url 'trueque.views.entrada' entrada.pk %}"><h3>Nombre del artículo: {{ entrada.titulo }}</h3></a>
+		<br>
+		<time>Fecha de creación del artículo: {{ entrada.fecha }}</time>
+		</br>
+		<h5>Teléfono de contacto: {{ entrada.telefono }}</h5>
+		<h5>Vendedor: {{ entrada.vendedor }}</h5>
+		<h5>Deseado a cambio a este producto: {{ entrada.deseado }}</h5>
+		<br>
+		{% if entrada.image %}	
+			<a href="{{MEDIA_URL}}{{ entrada.image }}"><img src="{{MEDIA_URL}}{{ entrada.image }}" width="90%" height="90%"></a>
+		{% else %}
+			<h3>Este artículo no tiene imágen, para más detalles, contactar con el vendedor.</h3>
+		{% endif %}
+		</br>
+		<p>Descripción del producto: {{ entrada.contenido }}</p>
+	</article>
+	
+	{% if comentario %}
+		<p>Comentarios:</p>
+	{% endif %}
+	
+	<ul>
+	{% for comentario in comentario %}
+		<li>{{ comentario.fecha }} - {{ comentario.autor }}</li>
+		<ul>
+		<p>Teléfono de contacto: {{ comentario.telefonoCo }}<p>
+		</ul>
+		<ul>
+			<li>{{ comentario.mensaje|linebreaks }}</li>
+		</ul>
+		
+	{% endfor %}
+	</ul>
+	
+	<form action="{% url 'trueque.views.poncomentario' entrada.id %}" method="POST">
+	{% csrf_token %} <!--linea obligatoria para formularios en django-->
+		<p>Autor: {{ form.autor }}</p>
+		<p>Telefono: {{ form.telefonoCo }}</p>
+		<p>Mensaje: <br>{{ form.mensaje }}</br></p>
+		<p><input type="submit" value="Enviar"></p>
+	</form>
+{% endblock %}

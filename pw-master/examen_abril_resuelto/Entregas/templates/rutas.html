@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title> Rutas </title>
+		<h1> Lista de Rutas</h1>
+		
+	</head>
+	<body>
+		{% if rutas %}
+		<ul>
+			{% for x in rutas %}
+			<a href =/Entregas/ruta/{{x.id}}><li> {{x.nombredelaruta}} </li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<h3> No hay Rutas disponibles </h3>
+		{% endif %}
+	</body>
+</html>

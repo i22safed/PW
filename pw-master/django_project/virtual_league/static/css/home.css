@@ -1,0 +1,159 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0097a7;
+}
+
+nav {
+  width: 100vw;
+  height: 8vh;
+  background-color: #006064;
+}
+
+nav a {
+  width: 25vw;
+  height: 8vh;
+  display: block;
+  float: left;
+  font-size: 3vh;
+  font-weight: 400;
+  line-height: 1.38;
+  text-align: center;
+  text-overflow: auto;
+  color: #e0f7fa;
+  overflow: auto;
+  text-transform: uppercase;
+  transition-duration: 0.5s;
+  padding-top: 2vh;
+}
+
+nav a:hover {
+  background-color: #e0f7fa;
+  color: #006064;
+  transition-duration: 0.5s;
+}
+
+.home {
+  background-image: url(../images/home.png);
+  background-size: 5vh;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home:hover {
+  background-image: url(../images/home-hover.png);
+}
+
+.squad {
+  background-image: url(../images/squad.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 5vh;
+}
+
+.squad:hover {
+  background-image: url(../images/squad-hover.png);
+}
+
+.table {
+  background-image: url(../images/table.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 5vh;
+}
+
+.table:hover {
+  background-image: url(../images/table-hover.png);
+}
+
+.logout {
+  background-image: url(../images/logout.png);
+  background-size: 5vh;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.logout:hover {
+  background-image: url(../images/logout-hover.png);
+}
+
+.active {
+  background-color: #00838f;
+  color: #e0f7fa;
+}
+
+strong {
+  font-weight: bold;
+  font-style: normal;
+}
+
+@media(orientation: landscape) {
+
+  div .welcome {
+    height: 10vh;
+    width: 100vw;
+    text-align: center;
+    color: #e0f7fa;
+    padding-top: 2.5vh;
+    font-size: 5vh;
+    font-weight: 400;
+    line-height: 1.38;
+    font-style: italic;
+    margin-top: 2vh;
+  }
+
+  div .left {
+    width: 50vw;
+    float: left;
+  }
+
+  img {
+    height: 50vh;
+    width: auto;
+    margin-left: calc((50vw - 50vh)/2);
+    margin-top: 15vh;
+  }
+
+  div .right {
+    width: 50vw;
+    float: right;
+  }
+
+}
+
+@media(orientation: portrait) {
+
+  div .welcome {
+    height: 10vh;
+    width: 100vw;
+    text-align: center;
+    color: #e0f7fa;
+    padding-top: 2.5vh;
+    font-size: 5vh;
+    font-weight: 400;
+    line-height: 1.38;
+    font-style: italic;
+    overflow: auto;
+  }
+
+  div .left {
+    height: 40vh;
+    width: auto;
+    margin-top: 2vh;
+  }
+
+  img {
+    height: 35vh;
+    width: auto;
+    margin-top: 2.5vh;
+    margin-left: calc((100vw - 35vh)/2);
+  }
+
+  div .right {
+    height: 40vh;
+    width: auto;
+  }
+}

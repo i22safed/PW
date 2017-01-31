@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+
+{% block entry %}
+              {% for post in entradas.object_list %}
+                <article class="box post post-excerpt">
+                  <header>
+                    <!--
+                      Note: Titles and subtitles will wrap automatically when necessary, so don't worry
+                      if they get too long. You can also remove the <p> entirely if you don't
+                      need a subtitle.
+                    -->
+                    <h2><a href="{% url 'blog.views.BlogDetail' post.slug %}">{{ post.title }}</a></h2>
+                  </header>
+                  <div class="info">
+                    <!--
+                      Note: The date should be formatted exactly as it's shown below. In particular, the
+                      "least significant" characters of the month should be encapsulated in a <span>
+                      element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
+                      Oh, and if you don't need a date for a particular page or post you can simply delete
+                      the entire "date" element.
+                      
+                    -->
+                    
+                    <span class="date"><span class="month"><script>getMonth({{ post.created.month }})</script><span>y</span></span> <span class="day">{{ post.created.day }}</span><span class="year">, {{ post.created.year }}</span></span>
+                    <!--
+                      Note: You can change the number of list items in "stats" to whatever you want.
+                    -->
+
+                    <ul class="stats">
+                      <!--<li><a href="/entry/{{ post.slug }}" class="icon fa-comment"></a></li>
+                      <li><a href="#" class="icon fa-heart">32</a></li>
+                      <li><a href="#" class="icon fa-twitter">64</a></li>
+                      <li><a href="#" class="icon fa-facebook">128</a></li>
+                    </ul>-->
+                  </div>
+                  <!--<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>-->
+                  <p>
+                    {% block entry_text %}
+                    {% if not post.modified == post.created %}
+                    <p>Modificada el {{ post.modified }}</p>
+                    {% endif %}
+                    <h4>Escrito por {{ post.author }} | Etiquetas: <i></i></h4>
+                    {{ post.body|markdown }}
+                    {% endblock %}
+                  </p>
+                </article>
+                {% endfor %}
+
+
+                {% if entradas.object_list and entradas.paginator.num_pages > 1 %}
+        <div class="pagination">
+            
+                {% if entradas.has_previous %}
+                    <a href= "?page={{ entradas.previous_page_number }}" class="button previous"> Entradas nuevas  &lt;&lt; </a>
+                {% endif %}
+                <div class="pages">
+                <p class="active">
+                    &nbsp;Página {{ entradas.number }} de {{ entradas.paginator.num_pages }}
+                </p>
+                </div>
+                {% if entradas.has_next %}
+                    <a href="?page={{ entradas.next_page_number }}" class="button next"> &gt;&gt; Entradas antiguas</a>
+                {% endif %}
+            
+        </div>
+        {% endif %}
+
+              <!--
+                <div class="pagination">
+                  <a href="#" class="button previous">Previous Page</a>
+                  <div class="pages">
+                    <a {% if not page_obj.has_previous %} class="disabled"{% endif %} {% if page_obj.has_previous %} href="?page={{ page_obj.previous_page_number }}" {% endif %}>Anterior</a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <span>&hellip;</span>
+                    <a href="#">20</a>
+                  </div>
+                  <a {% if not page_obj.has_next %} class="disabled" {% endif %} {% if page_obj.has_next %}href="?page={{ page_obj.next_page_nomber }}" {% endif %}class="button next">Siguiente</a>
+                </div>-->
+
+                
+            
+{% endblock %}
+
+
+             {% block panel_usuario %}
+             {% if user.is_authenticated %}
+              <nav id="nav">
+                <ul>
+                  <li>Bienvenido, {{ user.username }}</li>
+                  <li class="current"><a href="/">Últimas entradas</a></li>
+                  <li><a href="/publicar/">Publicar Entrada</a></li>
+                  <li><a href="/cerrar/sesion/">Cerrar Sesion</a></li>
+                  {% if user.is_superuser %}
+                  <li><a href="/mensajes/">Mensajes</a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+              {% else %}
+              <nav id="nav">
+                <ul>
+                  <li class="current"><a href="/">Últimas entradas</a></li>
+                  <li><a href="/ingresar/">Log In</a></li>
+                  <li><a href="/usuario/nuevo/">Sign Up</a></li>
+                </ul>
+              </nav>
+              {% endif %}
+              {% endblock %}
+<!-- {% block blog_entries %}
+
+    <div class="post">
+
+ 
+        <ul>
+            {% for post in entradas.object_list %}
+                <h2><a href="{% url 'blog.views.BlogDetail' post.slug %}">{{ post.title }}</a></h2>
+               	<p class="meta">
+               		{{ post.created }} | 
+               		<b>Etiquetas</b> <i>{{ post.tags.all|join:", "}}</i>
+               	</p>
+               	{{ post.body|markdown }}
+
+
+               			<p><a href="{% url 'blog.views.nuevocomentario' post.id %}">Comentar</a> | <a href="{% url 'blog.views.BlogDetail' post.slug %}">{{ num_comentarios }} comentarios</a></p>
+               		
+
+         
+               	
+
+            {% endfor %}
+
+      		</div>
+        </ul>
+
+        
+        {% if entradas.object_list and entradas.paginator.num_pages > 1 %}
+        <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
+            <span class="step-links">
+                {% if entradas.has_previous %}
+                    <a href= "?page={{ entradas.previous_page_number }}"> Entradas nuevas  &lt;&lt; </a>
+                {% endif %}
+
+                <span class="current">
+                    &nbsp;Página {{ entradas.number }} de {{ entradas.paginator.num_pages }}
+                </span>
+
+                {% if entradas.has_next %}
+                    <a href="?page={{ entradas.next_page_number }}"> &gt;&gt; Entradas antiguas</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
+
+    </div>
+
+{% endblock %} -->

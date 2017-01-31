@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% block titulo %} Suscribete {% endblock %}
+
+{% block encabezado %}
+      <div class="container">
+  		<h1>distribucion</h1>
+	</div>
+{% endblock %}
+
+{% block contenido %}
+<br><br>
+
+		<section id="form"><!--form-->
+		<div class="container">
+			<div class="row">
+
+
+				<div class="col-sm-3">
+				
+				</div>
+
+				<div class="col-sm-5">
+					<div class="login-form"><!--login form-->
+
+							<form id='formularioD' method='post' enctype='multipart/form-data' action=''>
+
+								{% csrf_token %}
+								<table>{{formularioD.as_p}}</table>
+								<p><input type='submit' class="btn btn-primary" value='Suscribete'/></p>
+
+							</form>
+					</div><!--/login form-->
+				</div>
+
+				<div class="col-sm-4">
+				
+				</div>
+
+			</div>
+		</div>
+	</section><!--/form-->
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+  
+
+{% endblock %}
+

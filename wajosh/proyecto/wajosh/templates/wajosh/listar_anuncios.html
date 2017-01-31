@@ -1,0 +1,141 @@
+{% extends 'index.html' %}
+{% block titulo %} Wanunciosh {% endblock %}
+
+{% block encabezado %}
+       <div class="container">
+     <h1> Wanunciosh </h1>
+  </div>
+{% endblock %}
+
+{% block contenido %}
+ 
+ <fieldset class="mainFieldset">
+
+    <div class="container">
+     	<div class="row">
+ 
+ 		  <div class="col-sm-4">
+         	<div class="features_items">
+				<h3>B&uacute;squeda por t&iacute;tulo:</h3>
+				<form action='/btitulo' method='get' role='search'>
+						<input type="text" name="titulo"  placeholder = "ej: iphone8...">
+						<input type='submit' value='Buscar'/></p>
+				</form>
+
+          	</div>
+          </div>
+ 		  <div class="col-sm-4">
+         	<div class="features_items">
+				<h3>B&uacute;squeda por provincia:</h3>
+					<form action='/bprovincia' method='get' role='search'>
+						<select name='provincia'>
+							<option value="0" disabled="disabled" style="background-color:#dcdcc3;" >--PROVINCIAS--</option>
+							<option value="">toda España</option>
+
+
+							{% for elemento in provincia %}
+							<option value='{{elemento.nombre}}'>{{elemento.nombre}}</option>
+							{% endfor %}
+						<p><input type='submit' value='Buscar'/></p>
+					</form>
+
+          	</div>
+          </div>
+ 		  <div class="col-sm-4">
+         	<div class="features_items">
+				<h3>B&uacute;squeda por categor&iacute;a:</h3>
+				<form action='/bcategoria' method='get' role='search'>
+						<select name='categoria'>
+						<option value="">todas las categor&iacute;as</option>
+
+							{% for elemento in categoria %}
+							<option value='{{elemento.nombre}}'>{{elemento.nombre}}</option>
+							{% endfor %}
+						<p><input type='submit' value='Buscar'/></p>
+					</form>
+
+          	</div>
+          </div>          
+
+    	</div>
+    </div>
+
+</fieldset>
+
+<hr>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-12 padding-right">
+          <div class="features_items"><!--features_items-->
+            <!--<h2 class="title text-center">Ultimos Anuncios</h2>-->
+            {% for elemento in listar_anuncios %}
+            <div class="col-sm-4">
+              <div class="product-image-wrapper">
+                <div class="single-products">
+                    <!-- <div class="productinfo text-center" >-->
+                    <div class="productinfo" >
+                        <div class="productinfo text-center" >
+
+                        <img src='{{MEDIA_URL}}{{elemento.imagen}}' WIDTH=128 HEIGHT=128 alt="" />
+                        </div>
+
+                        <br>
+                       Propietario <a href="/usuario/mizona/{{elemento.propietario.id}}"><i class="fa fa-plus-square"></i><strong>{{elemento.propietario}}</strong></a></li>
+                        <p>Titulo: {{elemento.titulo}}</p>
+                        <p>Provincia: {{elemento.provincia}}</p>
+                        <p>Categoria: {{elemento.categoria}}</p>
+
+
+                       <!-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Ver Anuncio</a> -->
+
+                    </div>
+                </div>
+                <div class="choose">
+                <ul class="nav nav-pills nav-justified">
+
+                    <li><a href="/verAnuncio/{{elemento.id}}"><i class="fa fa-plus-square"></i>Ver Anuncio</a></li>
+                    <!--<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>-->
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% empty %}
+             <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                          <h1>{{nombre.username}} no dispone de anuncios en el sistema</h1>
+                    </div>
+                  </div>
+            </div>
+
+            {% endfor %}
+
+          </div><!--features_items-->
+         </div><!--features_items-->
+
+            <center>
+              {% if listar_anuncios.has_previous %}
+                <a href="?page={{listar_anuncios.previous_page_number}}"> <img src='{{STATIC_URL}}/img/atras.png' width="30px" height="30px"></a>
+              {% endif %}
+              <span>Pagina {{listar_anuncios.number}} de {{listar_anuncios.paginator.num_pages}}</span>
+              {% if listar_anuncios.has_next %}
+                <a href="?page={{listar_anuncios.next_page_number}}"> <img src='{{STATIC_URL}}/img/adelante.png' width="30px" height="30px"></a>
+              {% endif %}
+           </center>
+
+      </div>
+    </div>
+
+
+
+  </section><!--/form-->  
+
+{% endblock %}
+
+
+
+

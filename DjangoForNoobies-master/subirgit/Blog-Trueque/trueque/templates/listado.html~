@@ -1,0 +1,28 @@
+{% extends "estructura.html" %}
+
+{% block contenido %}
+	{% block andaya %}
+			{% endblock %}
+	{% for entrada in entrada.object_list %}
+	<article>
+		<a href="{% url 'trueque.views.entrada' entrada.pk %}"><h3>{{ entrada.titulo }}</h3></a>
+		<time>Fecha de creación: {{ entrada.fecha }}</time>
+		</br>
+		<h5>Teléfono de contacto: {{ entrada.telefono }}</h5>
+		<h5>Vendedor: {{ entrada.vendedor }}</h5>
+		<h5>Deseado a cambio a este producto: {{ entrada.deseado }}</h5>
+	</article>
+	{% endfor %}
+	
+<nav>
+	{% if entrada.has_previous %}
+		<a href="?page={{ entrada.previous_page_number }}">Página anterior</a>
+	{% endif %}
+		<p>Página {{ entrada.number }} de {{ entrada.paginator.num_pages }}</p>
+				
+	{% if entrada.has_next %}
+		<a href="?page={{ entrada.next_page_number }}">Página siguiente</a>
+	{% endif %}
+</nav>
+				
+{% endblock %}

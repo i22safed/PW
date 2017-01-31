@@ -1,0 +1,69 @@
+{% extends 'index.html' %}
+{% block titulo %} Clasificados {% endblock %}
+
+{% block encabezado %}
+       <div class="container">
+     <h1> Usuarios </h1>
+  </div>
+{% endblock %}
+
+{% block contenido %}
+<section>
+
+  <section id="form"><!--form-->
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-12 padding-right">
+          <div class="features_items"><!--features_items-->
+            <!--<h2 class="title text-center">Ultimos Anuncios</h2>-->
+			{% for elemento in uPronvincia %}
+            <div class="col-sm-4">
+              <div class="product-image-wrapper">
+                <div class="single-products">
+                    <!-- <div class="productinfo text-center" >-->
+                    <div class="productinfo" >
+                        <div class="productinfo text-center" >
+
+                        <img src='{{MEDIA_URL}}{{elemento.avatar}}' WIDTH=128 HEIGHT=128 alt="" />
+                        </div>
+
+                        <br>
+                       Usuario <a href="/usuario/mizona/{{elemento.id}}"><i class="fa fa-plus-square"></i><strong>{{elemento.username}}</strong></a></li>
+                        <p>Provincia: {{elemento.provincia}}</p>
+                       <!-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Ver Anuncio</a> -->
+
+                    </div>
+                </div>
+                <div class="choose">
+                <ul class="nav nav-pills nav-justified">
+
+                    <li><a href="/usuario/mizona/{{elemento.id}}"><i class="fa fa-plus-square"></i>Ver Usuario</a></li>
+                    <!--<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>-->
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% empty %}
+             <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                          <h1>No se ha encontrado ninguna correspondenca  en {{provincia}} </h1>
+                    </div>
+                  </div>
+            </div>
+
+            {% endfor %}
+
+          </div><!--features_items-->
+         </div><!--features_items-->
+
+
+
+      </div>
+    </div>
+  </section><!--/form-->  
+
+{% endblock %}

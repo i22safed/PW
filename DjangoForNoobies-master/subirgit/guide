@@ -1,0 +1,14 @@
+1- django-admin.py startproject web
+2- sudo python manage.py migrate #a lo mejor es esto lo que fallaba, prueba a no hacerlo
+3- sudo python manage.py runserver 80
+4- modificamos settings.py y le añadimos el nombre del proyecto a "installed apps"
+5- sudo python manage.py startapp appblog
+6- modificamos models.py (dando permisos antes a la carpeta para poder modificar - sudo chmod -R 777 appblog)
+7- sudo python manage.py syncdb (a lo mejor aqui hace falta reiniciar la terminal)
+8- sudo python manage.py sql appblog
+9- hacer entradas desde el panel de control (add - Entradas)
+10- modificar views.py
+11- hacer carpeta template con el archivo html dentro (el nombre que le hemos puesto en el views.py)
+12- Creamos el archivo "listado.html"
+
+

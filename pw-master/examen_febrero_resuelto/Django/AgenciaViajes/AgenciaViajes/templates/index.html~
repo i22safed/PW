@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<title>Agencia de viajes virtual</title>
+<body>
+<h2>Bienvenido a la agencia de viajes virtual</h2>
+</body>
+		{% block content %}
+
+		{% endblock %}
+		{% if  user.is_authenticated %}
+			<h3> Bienvenido {{user.username}} </h3>
+		{% endif %}
+		{% if not user.is_authenticated %}
+		    <a href="/login">Entrar</a>
+		{% endif %}
+	 
+		{% if user.is_authenticated %}
+		   	<a href="/logout">Salir</a>
+		{% endif %}
+
+	<h3>Destinos</h3>
+		<a href ="/viajes/verDestino"> <li>Ver destinos</li></a>
+		<a href ="/viajes/addDestino"> <li>Añadir destinos</li></a>
+
+	<h3>Viajes</h3>
+		<a href ="/viajes/verViajes"> <li>Ver Viajes</li></a>
+		<a href ="/viajes/addViaje"> <li>Añadir Viajes</li></a>
+
+	<h3>Rutas</h3>
+		<a href ="/viajes/verRuta"> <li>Ver Rutas</li></a>
+</html>

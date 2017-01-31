@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ circunscripcion.nombre }}</title>
+  </head>
+  <body>
+    <ul>
+      {% for mesa in mesas %}
+        <li>
+          <a href="/mesa/{{ mesa.nombre }}">{{ mesa.nombre }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+{% block titulo %} Clasificados {% endblock %}
+
+{% block encabezado %}
+       <div class="container">
+     <h1> Clasificados </h1>
+  </div>
+{% endblock %}
+
+{% block contenido %}
+<section>
+
+  <section id="form"><!--form-->
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-12 padding-right">
+          <div class="features_items"><!--features_items-->
+            <!--<h2 class="title text-center">Ultimos Anuncios</h2>-->
+            {% for elemento in clasificados %}
+            <div class="col-sm-4">
+              <div class="product-image-wrapper">
+                <div class="single-products">
+                    <!-- <div class="productinfo text-center" >-->
+                    <div class="productinfo" >
+                        <div class="productinfo text-center" >
+
+                        <img src='{{MEDIA_URL}}{{elemento.imagen}}' WIDTH=128 HEIGHT=128 alt="" />
+                        </div>
+
+                        <br>
+                       Propietario <a href="/usuario/mizona/{{elemento.propietario.id}}"><i class="fa fa-plus-square"></i><strong>{{elemento.propietario}}</strong></a></li>
+                        <p>Titulo: {{elemento.titulo}}</p>
+
+                       <!-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Ver Anuncio</a> -->
+
+                    </div>
+                </div>
+                <div class="choose">
+                <ul class="nav nav-pills nav-justified">
+
+                    <li><a href="/verAnuncio/{{elemento.id}}"><i class="fa fa-plus-square"></i>Ver Anuncio</a></li>
+                    <!--<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>-->
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% empty %}
+             <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                          <h1>{{nombre.username}} no dispone de anuncios en el sistema</h1>
+                    </div>
+                  </div>
+            </div>
+
+            {% endfor %}
+
+          </div><!--features_items-->
+         </div><!--features_items-->
+
+            <center>
+              {% if clasificados.has_previous %}
+                <a href="?page={{clasificados.previous_page_number}}"> <img src='{{STATIC_URL}}/img/atras.png'  width="30px" height="30px"></a>
+              {% endif %}
+              <span>Pagina {{clasificados.number}} de {{clasificados.paginator.num_pages}}</span>
+              {% if clasificados.has_next %}
+                <a href="?page={{clasificados.next_page_number}}"> <img src='{{STATIC_URL}}/img/adelante.png'  width="30px" height="30px"></a>
+              {% endif %}
+           </center>
+
+      </div>
+    </div>
+  </section><!--/form-->  
+
+{% endblock %}
+
+
+
+

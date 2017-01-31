@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PicBoard</title>
+
+<link href="{{ STATIC_URL }}templatemo_style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}ddsmoothmenu.css" />
+
+</head>
+<body>
+
+<div id="templatemo_wrapper">
+
+
+	<div id="templatemo_header">
+    
+    	<div id="site_title"><h1><a href="/" rel="nofollow" target="_parent"><font color="red">P</font>ic<font color="red">B</font>oard</a></h1></div>
+        {% block nav %}
+        <div id="templatemo_menu" class="ddsmoothmenu">
+            <ul>
+              	<li><a href="/" class="selected">Inicio</a></li>
+          		<li><a href="/actividad">Actividad</a></li>
+		{% if not user.is_authenticated %}
+              	<li><a href="/login">Login</a></li>
+              	<li><a href="/registrar">Registrar</a></li>
+		{% else %}
+          	<li><a href="{%url 'Nav.views.imageList' user_id=user.id%}">Tablon</a></li>
+          	<li><a href="{%url 'Nav.views.UploadPictures'%}">Subir foto</a></li>
+		<li><a href="/logout">Desconectarse</a></li>
+            	{% endif %}	
+	    </ul>
+            <br style="clear: left" />
+        </div>
+	{% endblock %}
+        
+    </div> 
+    
+
+    
+    <div id="templatemo_main">
+    	<div class="col_fw">
+        	<div class="col_w460 float_l">
+		{% block izq %}
+            	<h2>{% if not user.is_authenticated %}¡Bienvenido!{% else %}¡Bienvenido {{user.username}}!{% endif %}</h2>
+                		{% if not user.is_authenticated %}
+							<img src="{{ STATIC_URL }}images/puente.jpg" alt="Córdoba" class="float_l" width=100% height=100%/>
+						{% else %}
+							{% if UserProfile.photo %}							
+								<a href="{{MEDIA_URL}}{{ UserProfile.photo }}"><img src="{{MEDIA_URL}}{{ UserProfile.photo }}" width="90%" height="90%"/></a>
+							{% else %}
+								<img src="{{ STATIC_URL }}/images/avatar.png" width="90%" height="90%"/></a>
+							{% endif %}
+						{% endif %}
+                <div class="cleaner h20"></div>
+		{% if not user.is_authenticated %}
+                <p><em>Registrarse le dará la oportunidad de pertenecer a una red social llena de fotos de lugares, diseño gráfico o simplemente un lugar dónde compartir lo que hiciste hoy mediante foto.</em></p>
+                <p>Esta web está realizada con Django en Enero de 2014 por Miguel Morales Carmona. Le ofrecerá las siguientes funcionalidades</p>
+                <ul class="tmo_list">
+               	    <li>Compartir tus fotos.</li>
+                    <li>Compartir las fotos que te gustaron de tus amigos.</li>
+                    <li>Inspeccionar otras imagenes por medio de etiquetas.</li>
+                    <li>Comentar las fotos.</li>
+                </ul>
+		{% else %}
+			
+		{% endif %}	
+		{% endblock %}  
+
+		          
+		</div>
+
+
+            <div class="col_w460 float_r">
+		{% block dcha %}
+			{% if user.is_authenticated %}
+            	<h2>Opciones</h2>
+                <div class="col_w460">
+
+                	<div class="fp_service_box fp_c1">
+                        <img src="{{ STATIC_URL }}images/1_64x64.png" alt="Image 1" />
+                        <a href="/search/user"> Busca amigos</a>   Encuentra a tus amigos y disfruta de lo que comparten.<br><br></div>
+                </div>
+                <div class="col_w460">
+                	<div class="fp_service_box fp_c2">
+                        <img src="{{ STATIC_URL }}images/29_64x64.png" alt="Image 2" />
+                        <a href="/search/foto"> Busca por etiquetas.</a>
+                        ¿Buscas fotos de algo en concreto? Usa nuestras etiquetas.
+					</div>
+                </div>
+                <div class="col_w460">
+                	<div class="fp_service_box fp_c3">
+                        <img src="{{ STATIC_URL }}images/32_64x64.png" alt="Image 3" />
+                        <a href="/enviarMensaje"> Manda mensajes.</a> Cuidar de los tuyos es muy importante. Mándales mensajes preguntando por cómo están o preguntándoles cuál es el lugar de sus fotos.</div>
+
+				</div>
+                <div class="col_w460">
+                	<div class="fp_service_box fp_c4">
+                        <img src="{{ STATIC_URL }}images/50_64x64.png" alt="Image 4" />
+                        <a href="/editar"> Editar tu perfil</a> Si quieres editar algo de tu perfil, este es tu lugar.<br><br></div>
+				</div>
+		{% endif%}
+	{% endblock %} 
+
+            </div>
+            <div class="cleaner"></div>
+		</div>
+   
+    <div class="cleaner"></div>
+
+<div id="templatemo_footer_wrapper">
+    <div id="templatemo_footer">
+        Copyright © 2014 <a href="www.uco.es">UCO</a> | 
+        Designed by Miguel Morales Carmona</a>
+        <div class="cleaner"></div>
+    </div>
+</div> 
+  
+
+<script type='text/javascript' src='js/logging.js'></script>
+</body>
+</html>

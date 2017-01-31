@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% block titulo %} Categorias {% endblock %}
+
+{% block encabezado %}
+      <div class="container">
+  		<h1>Categorias</h1>
+	</div>
+{% endblock %}
+
+{% block contenido %}
+<br><br>
+
+		<section id="form"><!--form-->
+		<div class="container">
+			<div class="row">
+
+
+				<div class="col-sm-3">
+				
+				</div>
+
+				<div class="col-sm-5">
+					<div class="login-form"><!--login form-->
+
+								
+						 {% for elemento in listar %}
+
+						 	<p>{{elemento.nombre}} - {{elemento.id}}</p>
+
+
+						 {% endfor %}
+
+
+
+					</div><!--/login form-->
+				</div>
+
+				<div class="col-sm-4">
+				
+				</div>
+
+			</div>
+		</div>
+	</section><!--/form-->
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+  
+
+{% endblock %}
+

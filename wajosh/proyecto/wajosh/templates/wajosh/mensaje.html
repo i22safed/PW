@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% block titulo %} Mi Zona {% endblock %}
+
+{% block encabezado %}
+     <div class="container">
+			<font size="6" color="blue">Leyedo de {{mensaje.fromu}}</font><br><br>
+	</div>
+{% endblock %}
+
+{% block contenido %}
+
+<section>
+
+  <section id="form"><!--form-->
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-9">
+             <div class="product-image-wrapper">
+                <div class="single-products">
+					{% block content %}
+						De: <a href="/usuario/mizona/{{mensaje.fromu.id}}"><strong>{{mensaje.fromu}}</strong></a>
+						para: {{mensaje.to}} <br>
+						Fecha : {{mensaje.fecha}}
+						<font color="black"><b><center>Mensaje</center></b><br> 
+							{{mensaje.texto}}</font>
+					{% endblock %}
+
+
+						<br><br>
+				</div>
+			</div>        
+				        
+        </div>
+        	<div class="col-sm-3">
+
+	      		{% block section-navigation %}
+				<a href="eliminar/{{mensaje.id}}">Eliminar mensaje de {{mensaje.fromu}}</a><br>
+				{% endblock %}
+     		 </div>
+      </div>
+    </div>
+  </section><!--/form-->
+
+
+{% endblock %}
+
+
+

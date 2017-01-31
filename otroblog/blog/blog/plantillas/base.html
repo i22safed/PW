@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>.:DoerLand:.</title>
+</head>
+<style>
+{% load staticfiles %}
+#asideD {
+   float: right;
+   width: 200px;
+   margin: 0 20px 0 0;
+   display: inline;
+   border: 2px solid black;
+}
+#asideI {
+   float: left;
+   width: 200px;
+   margin: 0 20px 0 0;
+   display: inline;
+   border: 2px solid black;
+}
+body{
+
+   background-color:lightgrey;
+   background-image: url('{% static "fondo.jpg" %}')
+}
+#contenido
+{
+   float: left;
+   width: 800px;
+   padding: 20px 0;
+   margin: 0 0 0 0px;
+   border: 2px solid #a1a1a1;
+   border-radius: 25px;
+   background: #dddddd;
+}
+#navegador ul{
+   list-style-type: none;
+}
+#navegador li{
+   display: inline;
+   text-align: center;
+   margin: 0 10px 0 0;
+}
+#navegador li a {
+   padding: 2px 7px 2px 7px;
+   color: #666;
+   background-color: #eeeeee;
+   border: 1px solid #ccc;
+   text-decoration: none;
+}
+#navegador li a:hover{
+   background-color: #333333;
+   color: #ffffff;
+}
+</style>
+<body>
+	<img src="{% static "title.png" %}" alt="DoerLand"/>
+   <div id="navegador">
+   <ul>
+      <li><a href="/">Inicio</a></li>
+      {% if user.is_authenticated %}
+         <li><a href="/nuevo_articulo">Crear Entrada</a></li>
+         <li><a href="/salir">Cerrar Sesion</a></li>
+         <div align=right>{{user.username}} ha iniciado sesión</div>
+      {% else %}
+         <li><a href="/nuevo_usuario">Registrar Usuario</a></li>
+         <li><a href="/entrar">Identificarse</a></li>
+         <div align=right>Sesión no iniciada</div>
+      {% endif %}
+   </ul>
+   </div>
+   <div id="asideI" align="center">
+      {% if user.is_authenticated %}
+         <h1><a href="/nuevo_blog">BlogRoll:</a></h1>
+      {% else %}
+         <h1>BlogRoll:</h1>
+      {% endif %}
+      {% for blog in blogs %}
+         <p><a href="{{blog.url}}">{{blog.nombre}}</a></p>
+      {% endfor %}
+   </div>
+	<div id="contenido">
+		{% block contenido %}{% endblock %}
+	</div>
+   <div id="asideD" align="center">
+      {% if user.is_authenticated %}
+         <h1><a href="/nueva_categoria">Categorías:</a></h1>
+      {% else %}
+         <h1>Categorías:</h1>
+      {% endif %}
+      {% for categoria in categorias %}
+         <p><a href="/articulo_categoria/{{categoria.id}}/">{{ categoria.nombre }}</a></p>
+      {% endfor %}
+   </div>
+</body>
+</html>

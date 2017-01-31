@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+{% load static %}
+{% load staticfiles %}
+<html lang='es'>
+<head>
+    <meta charset="utf-8">
+    <title>wajosh. {% block titulo %}{% endblock %}</title>
+
+    <!--<meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0"> -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}css/estilos.css">
+
+    <link rel='shortcut icon' href='{{STATIC_URL}}img/favicon.ico'>
+  {% block style_css %}{% endblock %}
+
+</head>
+<body>
+  <header>
+<header id="header"><!--header-->
+    <div class="header_top"><!--header_top-->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="contactinfo">
+              <ul class="nav nav-pills">
+              <!-- <li><a href="#"><i class="fa fa-phone"></i>Wajosh</a></li>header--> 
+                <li><a href="mailto:wajosh2015@gmail.com"><img src="{{STATIC_URL}}/img/mail.PNG" alt="" WIDTH=12 HEIGHT=12/><i class="fa fa-envelope"></i> wajosh2015@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="social-icons pull-right">
+              <ul class="nav navbar-nav">
+                <li><a href="#"><i class="fa fa-facebook">W</i></a></li>
+                <li><a href="#"><i class="fa fa-twitter">a</i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin">j</i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble">o</i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus">s</i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus">h</i></a></li>
+                <li><a href="/suscribete/"><i class="fa fa-google-plus">Suscribete</i></a></li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/header_top-->
+
+        <div class="header-middle"><!--header-middle-->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="logo pull-left">
+              <a href="/"><img src="{{STATIC_URL}}/img/logo.png" alt=""  /></a>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="shop-menu pull-right">
+              <ul class="nav navbar-nav">
+                <li><a href="/"><i class="fa fa-user"><img src="{{STATIC_URL}}/img/home.ico" alt="" WIDTH=15 HEIGHT=15 /></i> Inicio</a></li>
+                <li><a href="/anuncios"><img src="{{STATIC_URL}}/img/start.PNG" alt="" WIDTH=12 HEIGHT=12/><i class="fa fa-crosshairs"></i> Wanunciosh</a></li>
+                <li><a href="/usuarios"><img src="{{STATIC_URL}}/img/start.PNG" alt="" WIDTH=12 HEIGHT=12/><i class="fa fa-crosshairs"></i> Wusariosh</a></li>
+
+
+                {% if user.is_authenticated %}
+
+                 <li><a href="/usuario/mizona/{{usuario.id}}"><img src="{{STATIC_URL}}/img/geo.PNG" alt="" WIDTH=12 HEIGHT=12/><i class="fa fa-crosshairs"></i> Mi zona</a></li>
+
+                 <li><a href="/anuncios/nuevo"><img src="{{STATIC_URL}}/img/start.PNG" alt="" WIDTH=12 HEIGHT=12/><i class="fa fa-crosshairs"></i> Nuevo Anuncios</a></li>
+                 <!-- <li><a href="/usuarios"><i class="fa fa-crosshairs"></i> Usuarios registrados</a></li>-->
+                 <li><a href="/cerrar"><img src="{{STATIC_URL}}/img/cerrar.png" alt="" WIDTH=12 HEIGHT=12/><i class="fa fa-crosshairs"></i> Cerrar sesion</a></li>
+
+                 {% else %}
+                <li><a href="/ingresar"><img src="{{STATIC_URL}}/img/login.PNG" alt="" WIDTH=12 HEIGHT=12/><i class="fa fa-lock"></i> Loguearse</a></li>
+          
+                {% endif %}
+
+
+      
+
+                 <li><a href="/contacto"><img src="{{STATIC_URL}}/img/mail.PNG" alt="" WIDTH=12 HEIGHT=12/><i class="fa fa-crosshairs"></i> Contactanos</a></li>
+                <!-- <li><a href="/suscribete"><i class="fa fa-crosshairs"></i> suscribete</a></li>-->
+
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/header-middle-->
+
+	{% block encabezado %}
+
+    <div class="container">
+     <h1>Home</h1>
+   </div>
+
+  {% endblock %}
+
+
+                {% block contenido %}{% endblock %}
+
+  
+
+<!--	<nav>
+	  <ul id='menu'>
+		  <li><a href='/'>Inicio</a></li>
+      <li><a href='/ingresar'>Loguearse</a></li>
+      <li><a href='/anuncios'>Listar Anuncios</a></li>
+      <li><a href='/anuncios/nuevo'>Nuevo Anuncio</a></li>
+		  <li><a href='/usuarios'>Usuarios registrados</a></li>
+		  <li><a href='/usuarios/nuevo'>new_usuario</a></li>
+      <li><a href="/comenta">Comenta</a></li>
+		  <li><a href='/sobre'>Sobre</a></li>
+      <li><a href="/contacto">Contactanos</a></li>
+      <li><a href="/cerrar">Cerrar sesion</a></li>
+
+    </ul>
+	</nav>
+	<hr> -->
+  </header>	
+    <footer id="footer"><!--Footer-->
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="companyinfo">
+              <h2><span>W</span>-ajosh</h2>
+              <p>Portal de Intercambio</p>
+            </div>
+          </div>
+          <div class="col-sm-7">
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="{{STATIC_URL}}/img/trueque-egipto.gif" alt="" />
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Wajosh Productos</p>
+              </div>
+            </div>
+            
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="{{STATIC_URL}}/img/trueque3.jpg" alt="" />
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Wajosh Servicios</p>
+              </div>
+            </div>
+            
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="{{STATIC_URL}}/img/eco.jpg" alt="" />
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Wajosh ECO</p>
+              </div>
+            </div>
+            
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="{{STATIC_URL}}/img/conv.jpg" alt="" />
+
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Wajosh comunicación</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="address">
+                    <img src="{{STATIC_URL}}/img/uco.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-widget">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>Servicios</h2>
+              <ul class="nav nav-pills nav-stacked">
+              <li><a href="/categorias">Categorias</a></li>
+
+                <li><a href="http://en.wikipedia.org/wiki/Josiah_Warren" target=blank>Zona de ayuda</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>Aviso Legal</h2>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="/contacto/">Contacto</a></li>
+            
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>Potilicas</h2>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="http://en.wikipedia.org/wiki/Josiah_Warren" target=blank>Terminos de uso</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>Sobre Wajosh</h2>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="http://en.wikipedia.org/wiki/Josiah_Warren" target=blank>Información</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-3 col-sm-offset-1">
+            <div class="single-widget">
+              <a href="http://en.wikipedia.org/wiki/Josiah_Warren" target=blank><h2>Josiah Warren</h2></a>
+
+              <!--<form id='formularioD' method='post' class="searchform" enctype='multipart/form-data' action=''>
+
+                {% csrf_token %}
+                <input type="text" placeholder="tucorreo@domino.com" />
+                <input type='submit' class="btn btn-primary" value="Suscribirse ">
+                <table>{{formularioD.as_p}}</table>
+
+                <p>Recibe las más recientes actualizaciones de Wajosh</p>
+              </form>-->
+              <center><b >TuMail@domino.xXx</b></center>
+              <form id='formularioD' method='post' enctype='multipart/form-data' action=''>
+
+                {% csrf_token %}
+                <table>{{formularioD.as_p}}</table>
+                <p><input type='submit' class="btn btn-primary" value='Suscribirse'/></p>
+
+              </form>
+              <p>Recibe las más recientes actualizaciones de Wajosh</p>
+
+
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <p class="pull-left">Copyright © 2015 MarKing DesInc. All rights reserved.</p>
+          <p class="pull-right">Designed by <span><a target="_blank" href="">MarKing</a></span></p>
+        </div>
+      </div>
+    </div>
+    
+  </footer><!--/Footer-->
+
+  <script src="{{STATIC_URL}}js/jquery-1.11.2.js"></script>
+  <script src='{{STATIC_URL}}js/bootstrap.js'></script>
+</body>
+</html>

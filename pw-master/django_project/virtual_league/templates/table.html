@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clasificación</title>
+    {% load staticfiles %}
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/standardize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <a class="home" href="/"></a>
+        <a class="squad" href="/squad"></a>
+        <a class="active table" href="/table"></a>
+        <a class="logout" href="/logout"></a>
+      </nav>
+      <table>
+        <tr class="first-row">
+          <th>Usuario</th>
+          <th>Puntuación</th>
+        </tr>
+        {% for totalscore in totalscores %}
+          <tr>
+            <th>
+              <a href="/{{ totalscore.username }}">{{ totalscore.username }}</a>
+            </th>
+            <th>
+              <a>{{ totalscore.score }}</a>
+            </th>
+          </tr>
+        {% endfor %}
+        <tr class="last-row">
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

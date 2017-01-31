@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<title>Empresa de reparto de paquetes</title>
+<body>
+<h2>Bienvenido a la agencia de transportes</h2>
+<ul>
+		    <li><a href="/">Home</a></li>
+		    <li><a href="{% url 'entregas.views.DestinatariosView' %}">Destinatarios</a></li>
+		    <li><a href="{% url 'entregas.views.NewDestView' %}">Nuevo Destinatario</a></li>
+		    <li><a href="{% url 'entregas.views.PaquetesView' %}">Paquetes</a></li>
+		    <li><a href="{% url 'entregas.views.NewPaqueteView' %}">Nuevo Paquete</a></li>
+		    {% if not user.is_authenticated %}
+		    	<li><a href="{% url 'entregas.views.login_view' %}">Login</a></li>
+		    	<li><a href="{% url 'entregas.views.newUser' %}">Register</a></li>
+		    {% endif %}
+		  	{% if user.is_authenticated %}
+		   	 <li><a href="{% url 'entregas.views.logout_view' %}">Logout</a></li>
+		    {% endif %}
+		    <li><a href="/about">About</a></li>
+		    <li><a href="/rules">Rules</a></li>
+		</ul>
+{% block content %}
+{% endblock content %}
+</body>
+</html>

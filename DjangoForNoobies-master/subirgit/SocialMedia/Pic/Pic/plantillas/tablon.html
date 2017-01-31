@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block izq %}
+	<h1>Tablón de {{user.username}}</h1>
+	<hr>
+	<h2>Subidas por ti</h2>
+	{% if imageList %}
+		{% for Image in imageList %}
+		  <a href="{% url 'Nav.views.comentar' image_id=Image.id %}"><img src="{{MEDIA_URL}}{{ Image.imagen }}" width="90%" height="90%"/></a>
+			{% if sesion != user.id %}
+				<a href="{% url 'Nav.views.repic' img_id=Image.id user_id=user.id %}"><img src="{{STATIC_URL}}/images/repic.png" width="30" height="30"/></a>		
+			{% endif%}
+		{% endfor %}
+	{% else %}
+		{% if sesion == user.id %}
+			No te tienes imagenes subidas. Sube una ahora <a href="{%url 'Nav.views.UploadPictures'%}">AQUÍ</a>.<br>
+		{% else %}
+			El usuario no tiene imagenes.<br>
+		{% endif %}
+	<hr>
+	{% endif %}
+	{% if imageList2 %}	
+		<h2>Repics</h2>
+		{% for Image in imageList2 %}
+		  <a href="{% url 'Nav.views.comentar' image_id=Image.id %}"><img src="{{MEDIA_URL}}{{ Image.imagen }}" width="90%" height="90%"/></a>
+			{% if sesion != user.id %}
+				<a href="{% url 'Nav.views.repic' img_id=Image.id user_id=user.id %}"><img src="{{STATIC_URL}}/images/repic.png" width="30" height="30"/></a>		
+			{% endif%}
+		{% endfor %}			
+	{% endif %}
+
+{% endblock %}
+
+{% block dcha%}
+	{% if sesion == user.id %}
+		<h1>¡Visita a tus amigos!</h1>
+			{% if userList %}
+				<ul>
+				{% for UserProfile in userList %}
+					<li><a href="{% url 'Nav.views.imageList' user_id=UserProfile.id %}">{{UserProfile.username}}</a>
+				{% endfor %}
+				</ul>
+			{% else %}
+				No tienes amigos.
+			{% endif %}
+	{% else %}
+		<h><a href="{%url 'Nav.views.addFriend' user_id=user.id%}">¡Agregame como amigo!</h>
+	{% endif %}
+
+{% endblock %}

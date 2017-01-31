@@ -1,0 +1,6 @@
+from django.contrib import admin
+from appblog.models import Entrada
+from appblog.models import Comentario
+
+admin.site.register(Entrada)
+# Register your models here.

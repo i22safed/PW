@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<title> Editar Paquete </title>
+		
+		
+	</head>
+
+	<body>
+		<h1> Editar Paquete </h1>
+		
+		<form id='formulario' method='post' enctype='multipart/form-data' action=''>
+			{% csrf_token %}
+			
+				{{formulario.as_p}}
+				<input type="submit" value="Aceptar Edición"/>
+		</form>
+		
+	</body>
+</html>
