@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+
+ {% block panel_usuario %}
+             {% if user.is_authenticated %}
+              <nav id="nav">
+                <ul>
+                  <li>Bienvenido, {{ user.username }}</li>
+                  <li><a href="/">Últimas entradas</a></li>
+                  <li><a href="/publicar/">Publicar Entrada</a></li>
+                  <li><a href="/cerrar/sesion/">Cerrar Sesion</a></li>
+                 {% if user.is_superuser %}
+                  <li><a href="/mensajes/">Mensajes</a></li>
+                  {% endif %}
+                  {% if user == entrada.author %}
+                  <li><a href="/editar/{{ entrada.id }}">Editar entrada</a></li>
+                  {% endif %}
+
+                </ul>
+              </nav>
+              {% else %}
+              <nav id="nav">
+                <ul>
+                  <li><a href="/">Últimas entradas</a></li>
+                  <li><a href="/ingresar/">Log In</a></li>
+                  <li><a href="/usuario/nuevo/">Sign Up</a></li>
+                </ul>
+              </nav>
+              {% endif %}
+              {% endblock %}
+
+{% block entry %}
+<h3> Entradas del día:
+{% for entrada in entradas %}
+
+    {% ifchanged %}{{entrada.fecha|date:"d  M  Y"}}</h3>{% endifchanged %}
+
+    <li>{{ forloop.counter }} <a href="{% url "entrydetail" entrada.slug %}" class="button">
+{{ entrada }}</a></li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
