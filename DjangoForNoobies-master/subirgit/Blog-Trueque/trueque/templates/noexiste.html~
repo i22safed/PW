@@ -1,8 +1,0 @@
-{% extends 'index.html' %}
-
-{% block izq %}
-Error en el inicio de sesión. El usuario introducido no existe.
-
-<li><a href="http://localhost/login/">Inicia Sesión</a></li>
-<li><a href="http://localhost/registrar/">Registrar</a></li>
-{% endblock %}

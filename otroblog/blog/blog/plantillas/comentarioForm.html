@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-{% block contenido %}
-	<form action="." method="post">{% csrf_token %}
-	<div>
-	<p align="center">{{ form.texto }}</p>
-	</div>
-	<input type="submit" name="submit" value="Actualizar">
-	</form>
-{% endblock %}

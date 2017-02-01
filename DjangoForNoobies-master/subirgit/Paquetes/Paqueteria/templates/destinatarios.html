@@ -1,8 +1,0 @@
-{% extends 'index.html' %}
-{% block content %}
-	{% for dest in destinatarios %}
-	<p>
-	Destinatario: {{ dest.id }}<a href="/destinatarios/{{ dest.id }}"> Detalles</a>
-	</p>
-	{% endfor %}
-{% endblock content %}
